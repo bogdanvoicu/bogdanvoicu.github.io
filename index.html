@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Personal presentation page: software architect & senior developer." />
+  <title>Your Name — Software Architect</title>
+
+  <!-- Open Graph (optional) -->
+  <meta property="og:title" content="Your Name — Software Architect" />
+  <meta property="og:description" content="Cloud-native architecture • Java/Spring • AWS • Microservices" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.55);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1080px;
+      --gap: 18px;
+
+      /* Accent (change these 2 if you want a different vibe) */
+      --accent: #7c3aed; /* violet */
+      --accent2: #22d3ee; /* cyan */
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(124,58,237,.25), transparent 60%),
+        radial-gradient(1000px 700px at 80% 20%, rgba(34,211,238,.18), transparent 60%),
+        radial-gradient(900px 700px at 50% 90%, rgba(124,58,237,.12), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding:28px 18px 64px; }
+
+    /* Top nav */
+    .nav{
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      display:flex;
+      justify-content:center;
+      margin: 10px 0 26px;
+    }
+    .navInner{
+      width:min(var(--max), 100%);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      background: rgba(10,14,26,.65);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(124,58,237,.15);
+    }
+    .brand strong{ font-size:14px; letter-spacing:.2px; }
+    .brand span{ font-size:12px; color:var(--muted2); margin-left:6px; }
+
+    .navLinks{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+    .navLinks a{
+      font-size:13px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .navLinks a:hover{
+      border-color: var(--border);
+      background: rgba(255,255,255,.04);
+      text-decoration:none;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: var(--gap);
+      align-items:stretch;
+      margin-top: 18px;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .navInner{ padding:10px; }
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .heroMain{
+      position:relative;
+      overflow:hidden;
+      padding: 28px;
+    }
+    .heroMain::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 220px at 15% 15%, rgba(124,58,237,.18), transparent 60%),
+        radial-gradient(700px 220px at 85% 35%, rgba(34,211,238,.14), transparent 60%);
+      pointer-events:none;
+      filter: blur(0px);
+    }
+    .heroMain > *{ position:relative; }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .pill{
+      font-size:12px;
+      padding:3px 8px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: 44px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    @media (max-width: 500px){
+      h1{ font-size: 36px; }
+    }
+    .subtitle{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+
+    .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration:none;
+    }
+    .btn:hover{ text-decoration:none; background: rgba(255,255,255,.06); }
+    .btnPrimary{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #071018;
+      box-shadow: 0 12px 40px rgba(124,58,237,.25);
+    }
+    .btnPrimary:hover{ filter: brightness(1.05); }
+
+    /* Right hero card */
+    .heroSide{
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+    }
+    .mini{
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .mini h3{
+      margin:0 0 6px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing:.2px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .mini p{ margin:0; color: var(--text); font-size: 14px; }
+    .statRow{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top: 10px;
+    }
+    .stat{
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .stat b{ display:block; font-size: 16px; }
+    .stat span{ font-size: 12px; color: var(--muted2); }
+
+    /* Sections */
+    section{ margin-top: 18px; }
+    .sectionTitle{
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: .24px;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
+    }
+    @media (max-width: 900px){
+      .grid3{ grid-template-columns: 1fr; }
+      .statRow{ grid-template-columns: 1fr; }
+    }
+
+    .service h2{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing:-.2px;
+    }
+    .service p{
+      margin:0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+    .tag{
+      font-size:12px;
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+
+    .projGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+    }
+    @media (max-width: 900px){
+      .projGrid{ grid-template-columns: 1fr; }
+    }
+    .project h2{
+      margin:0 0 6px;
+      font-size: 18px;
+    }
+    .project .meta{
+      color: var(--muted2);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .project p{
+      margin:0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .project .links{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 28px;
+      text-align:center;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+
+    /* Small helpers */
+    .sep{ height:1px; background: rgba(255,255,255,.10); margin: 14px 0; }
+    .muted{ color: var(--muted); }
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: var(--muted2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- Sticky Nav -->
+    <div class="nav">
+      <div class="navInner">
+        <div class="brand">
+          <div class="dot" aria-hidden="true"></div>
+          <div>
+            <strong>Your Name</strong><span>Software Architect</span>
+          </div>
+        </div>
+        <div class="navLinks">
+          <a href="#services">Services</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#projects">Selected work</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="card heroMain">
+        <div class="kicker">
+          <span class="pill">Available for B2B</span>
+          <span class="mono">Remote • EU-friendly</span>
+        </div>
+
+        <h1>Designing cloud-native systems that scale — and stay maintainable.</h1>
+        <p class="subtitle">
+          I’m a <b>Software Architect</b> and <b>Senior Developer</b> focusing on microservices, AWS, and the Java/Spring ecosystem.
+          I help teams modernize platforms, reduce delivery friction, and ship reliable systems.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#contact">Let’s talk</a>
+          <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/YOUR-GITHUB" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="mailto:you@domain.com">Email</a>
+        </div>
+
+        <div class="sep"></div>
+
+        <div class="tags">
+          <span class="tag">Java 8–21</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Microservices</span>
+          <span class="tag">AWS (ECS/EKS/Fargate)</span>
+          <span class="tag">Kafka / Eventing</span>
+          <span class="tag">Docker / Kubernetes</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">Observability</span>
+        </div>
+      </div>
+
+      <div class="heroSide">
+        <div class="card">
+          <div class="mini">
+            <h3>What you get</h3>
+            <p>Clear architecture, pragmatic trade-offs, and delivery-focused execution.</p>
+          </div>
+
+          <div class="statRow">
+            <div class="stat">
+              <b>15+ years</b>
+              <span>engineering & architecture</span>
+            </div>
+            <div class="stat">
+              <b>Cloud-native</b>
+              <span>AWS-first delivery</span>
+            </div>
+            <div class="stat">
+              <b>Hands-on</b>
+              <span>design → build → ship</span>
+            </div>
+          </div>
+
+          <div class="sep"></div>
+
+          <div class="mini">
+            <h3>Focus areas</h3>
+            <p class="muted">
+              Modernization • Platform decomposition • Secure integration • Operational excellence
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section id="services" class="card">
+      <div class="sectionTitle">Services</div>
+      <div class="grid3">
+        <div class="service">
+          <h2>Architecture & strategy</h2>
+          <p>
+            Target architecture, ADRs, roadmap planning, and stakeholder-ready narratives. Align teams around a system that’s buildable and operable.
+          </p>
+          <div class="tags">
+            <span class="tag">Solution design</span>
+            <span class="tag">ADRs</span>
+            <span class="tag">Threat modeling</span>
+          </div>
+        </div>
+
+        <div class="service">
+          <h2>Modernization & migration</h2>
+          <p>
+            Break down monoliths, migrate workloads, untangle data flows, and reduce legacy drag while keeping delivery moving.
+          </p>
+          <div class="tags">
+            <span class="tag">Strangler pattern</span>
+            <span class="tag">Data migration</span>
+            <span class="tag">Cloud adoption</span>
+          </div>
+        </div>
+
+        <div class="service">
+          <h2>Delivery enablement</h2>
+          <p>
+            CI/CD, observability, performance, and operational readiness. Improve throughput without sacrificing reliability.
+          </p>
+          <div class="tags">
+            <span class="tag">CI/CD</span>
+            <span class="tag">SRE practices</span>
+            <span class="tag">Cost control</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section id="highlights" class="card">
+      <div class="sectionTitle">Highlights</div>
+      <div class="grid3">
+        <div class="mini">
+          <h3>Cloud & platform</h3>
+          <p class="muted">AWS (ECS/EKS/Fargate), EventBridge, S3, Secrets Manager, IaC, containerized delivery.</p>
+        </div>
+        <div class="mini">
+          <h3>Backend systems</h3>
+          <p class="muted">Java/Spring Boot, APIs, event-driven design, Kafka, distributed systems patterns.</p>
+        </div>
+        <div class="mini">
+          <h3>Operational excellence</h3>
+          <p class="muted">Observability, SLIs/SLOs, performance tuning, reliability reviews, pragmatic guardrails.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Projects -->
+    <section id="projects" class="card">
+      <div class="sectionTitle">Selected work</div>
+
+      <div class="projGrid">
+        <div class="project">
+          <h2>Platform decomposition (microservices)</h2>
+          <div class="meta">Architecture • domain boundaries • eventing</div>
+          <p>
+            Defined target architecture and migration path from monolith to services, including integration patterns and operational standards.
+          </p>
+          <div class="tags">
+            <span class="tag">DDD</span>
+            <span class="tag">Kafka</span>
+            <span class="tag">Spring Boot</span>
+          </div>
+          <div class="links">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Case study</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Diagram</a>
+          </div>
+        </div>
+
+        <div class="project">
+          <h2>AWS modernization</h2>
+          <div class="meta">ECS/EKS • CI/CD • security</div>
+          <p>
+            Delivered cloud-native deployment, secrets management, and automated delivery pipelines with clear operational ownership.
+          </p>
+          <div class="tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">CI/CD</span>
+          </div>
+          <div class="links">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Overview</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+        </div>
+
+        <div class="project">
+          <h2>Security & compliance integration</h2>
+          <div class="meta">KYC • risk controls • auditability</div>
+          <p>
+            Designed secure service flows, audit trails, and reliability controls for regulated workflows, minimizing friction for product teams.
+          </p>
+          <div class="tags">
+            <span class="tag">Security</span>
+            <span class="tag">Audit</span>
+            <span class="tag">APIs</span>
+          </div>
+          <div class="links">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Notes</a>
+          </div>
+        </div>
+
+        <div class="project">
+          <h2>Observability upgrade</h2>
+          <div class="meta">Metrics • logs • tracing</div>
+          <p>
+            Established consistent instrumentation standards and dashboards to reduce incident MTTR and improve confidence in releases.
+          </p>
+          <div class="tags">
+            <span class="tag">Grafana</span>
+            <span class="tag">Tracing</span>
+            <span class="tag">SLOs</span>
+          </div>
+          <div class="links">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Dashboards</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card">
+      <div class="sectionTitle">Contact</div>
+      <p class="muted" style="margin-top:0;">
+        Best way to reach me: email or LinkedIn. I’m open to remote B2B engagements (architecture + hands-on delivery).
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn btnPrimary" href="mailto:you@domain.com">Email: you@domain.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/YOUR-GITHUB" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="#services">View services</a>
+      </div>
+
+      <div class="sep"></div>
+
+      <div class="mono">
+        Tip: add a PDF CV link here if you want: <span class="muted">/cv.pdf</span>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Your Name • Built for GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // Set year in footer
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
